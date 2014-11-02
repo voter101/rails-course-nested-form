@@ -3,6 +3,8 @@
 %table
   %tr
     %th Name
+    %th Street
+    %th Credit Card Number
     %th
     %th
     %th
@@ -10,6 +12,12 @@
   - @users.each do |user|
     %tr
       %td= user.name
+      %td= user.address.street
+      - if user.payment_data.present?
+        %td= user.payment_data.card_number
+      - else
+        %td
+          %i Blank
       %td= link_to 'Show', user
       %td= link_to 'Edit', edit_user_path(user)
       %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }

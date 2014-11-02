@@ -3,6 +3,15 @@
 %p
   %b Name:
   = @user.name
+  %br
+  %b Street Address:
+  = @user.address.street
+  %br
+  %b Credit Card Number:
+  - if @user.payment_data.present?
+    = @user.payment_data.card_number
+  - else
+    %i Blank
 
 = link_to 'Edit', edit_user_path(@user)
 \|

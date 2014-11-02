@@ -9,5 +9,13 @@
   .field
     = f.label :name
     = f.text_field :name
+  = f.fields_for :address do |address|
+    .field
+      = address.label :street
+      = address.text_field :street
+  = f.fields_for :payment_data do |payment_data|
+    .field
+      = payment_data.label :card_number
+      = payment_data.text_field :card_number
   .actions
     = f.submit 'Save'
